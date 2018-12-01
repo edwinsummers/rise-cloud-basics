@@ -1,0 +1,20 @@
+#cloud-config
+package_upgrade: true
+packages:
+  - python3-pip
+
+write_files:
+  - path: "/home/riseuser/python/rise.py"
+    permissions: '0640'
+    owner: riseuser:riseuser
+    encoding: b64
+    content: |
+      IyEvdXNyL2Jpbi9lbnYgcHl0aG9uCgpmcm9tIGZsYXNrIGltcG9ydCBGbGFzawoKYXBwID0gRmxh
+      c2soX19uYW1lX18pCgpAYXBwLnJvdXRlKCcvJykKZGVmIGhlbGxvKCk6CiAgICByZXR1cm4oJ0hl
+      bGxvIFJJU0UhJykKCkBhcHAucm91dGUoJy9mb28vPHN0cmluZzpiYXI+JykKZGVmIHByaW50X2Jh
+      cihiYXIpOgogICAgcmV0dXJuKGYnWW91IGVudGVyZWQgdGhlIHRleHQ6XHR7YmFyfScpCgppZiBf
+      X25hbWVfXyA9PSAnX19tYWluX18nOgogICAgYXBwLnJ1bihob3N0PScwLjAuMC4wJykK
+
+runcmd:
+  - pip3 install flask
+  - python3 /home/riseuser/python/rise.py

@@ -1,0 +1,97 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "eastus2"
+        },
+        "networkInterfaceName": {
+            "value": "riseiaasdemo256"
+        },
+        "networkSecurityGroupName": {
+            "value": "riseiaasdemo-nsg"
+        },
+        "networkSecurityGroupRules": {
+            "value": [
+                {
+                    "name": "flask_port_5000",
+                    "properties": {
+                        "priority": 100,
+                        "protocol": "TCP",
+                        "access": "Allow",
+                        "direction": "Inbound",
+                        "sourceApplicationSecurityGroups": [],
+                        "destinationApplicationSecurityGroups": [],
+                        "sourceAddressPrefix": "*",
+                        "sourcePortRange": "*",
+                        "destinationAddressPrefix": "*",
+                        "destinationPortRange": "5000"
+                    }
+                },
+                {
+                    "name": "default-allow-ssh",
+                    "properties": {
+                        "priority": 1000,
+                        "protocol": "TCP",
+                        "access": "Allow",
+                        "direction": "Inbound",
+                        "sourceApplicationSecurityGroups": [],
+                        "destinationApplicationSecurityGroups": [],
+                        "sourceAddressPrefix": "*",
+                        "sourcePortRange": "*",
+                        "destinationAddressPrefix": "*",
+                        "destinationPortRange": "22"
+                    }
+                }
+            ]
+        },
+        "subnetName": {
+            "value": "default"
+        },
+        "virtualNetworkName": {
+            "value": "riseiaasdemo-vnet"
+        },
+        "addressPrefixes": {
+            "value": [
+                "10.0.0.0/24"
+            ]
+        },
+        "subnets": {
+            "value": [
+                {
+                    "name": "default",
+                    "properties": {
+                        "addressPrefix": "10.0.0.0/24"
+                    }
+                }
+            ]
+        },
+        "publicIpAddressName": {
+            "value": "riseiaasdemo-ip"
+        },
+        "publicIpAddressType": {
+            "value": "Dynamic"
+        },
+        "publicIpAddressSku": {
+            "value": "Basic"
+        },
+        "virtualMachineName": {
+            "value": "riseiaasdemo"
+        },
+        "virtualMachineRG": {
+            "value": "rg_rise-demo"
+        },
+        "osDiskType": {
+            "value": "Standard_LRS"
+        },
+        "virtualMachineSize": {
+            "value": "Standard_B1s"
+        },
+        "adminUsername": {
+            "value": "riseuser"
+        },
+        "customData": {
+            "value": "I2Nsb3VkLWNvbmZpZwpwYWNrYWdlX3VwZ3JhZGU6IHRydWUKcGFja2FnZXM6CiAgLSBweXRob24zLXBpcAoKd3JpdGVfZmlsZXM6CiAgLSBwYXRoOiAiL2hvbWUvcmlzZXVzZXIvcHl0aG9uL3Jpc2UucHkiCiAgICBwZXJtaXNzaW9uczogJzA2NDAnCiAgICBvd25lcjogcmlzZXVzZXI6cmlzZXVzZXIKICAgIGVuY29kaW5nOiBiNjQKICAgIGNvbnRlbnQ6IHwKICAgICAgSXlFdmRYTnlMMkpwYmk5bGJuWWdjSGwwYUc5dUNncG1jbTl0SUdac1lYTnJJR2x0Y0c5eWRDQkdiR0Z6YXdvS1lYQndJRDBnUm14aAogICAgICBjMnNvWDE5dVlXMWxYMThwQ2dwQVlYQndMbkp2ZFhSbEtDY3ZKeWtLWkdWbUlHaGxiR3h2S0NrNkNpQWdJQ0J5WlhSMWNtNG9KMGhsCiAgICAgIGJHeHZJRkpKVTBVaEp5a0tDa0JoY0hBdWNtOTFkR1VvSnk5bWIyOHZQSE4wY21sdVp6cGlZWEkrSnlrS1pHVm1JSEJ5YVc1MFgySmgKICAgICAgY2loaVlYSXBPZ29nSUNBZ2NtVjBkWEp1S0dZbldXOTFJR1Z1ZEdWeVpXUWdkR2hsSUhSbGVIUTZYSFI3WW1GeWZTY3BDZ3BwWmlCZgogICAgICBYMjVoYldWZlh5QTlQU0FuWDE5dFlXbHVYMThuT2dvZ0lDQWdZWEJ3TG5KMWJpaG9iM04wUFNjd0xqQXVNQzR3SnlrSwoKcnVuY21kOgogIC0gcGlwMyBpbnN0YWxsIGZsYXNrCiAgLSBweXRob24zIC9ob21lL3Jpc2V1c2VyL3B5dGhvbi9yaXNlLnB5Cg=="
+        }
+    }
+}
