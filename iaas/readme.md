@@ -16,7 +16,7 @@ Prior to deploying the template you must have the following:
 
 * Azure subscription (free account eligible)
 * SSH key pair
-* (optional) Azure CLI
+* *(optional)* Azure CLI
 
 ### Azure subscription
 
@@ -27,6 +27,7 @@ If you do not have an Azure subscription, you can sign up [here](https://azure.m
 If you don't have an SSH key pair already, follow instructions below based on your OS.
 
 [Windows SSH key pair generation using PuttyGen](https://www.ssh.com/ssh/putty/windows/puttygen "ssh.com")
+
 [Linux SSH key pair generation](https://www.ssh.com/ssh/keygen/ "ssh.com")
 
 ### Azure CLI
@@ -49,7 +50,7 @@ The template deploys a small-instance (Standard B1) with Ubuntu Linux 18.04. The
 
 * Deploy the template; Replace *PUBLIC_KEY* with the contents of your SSH **public** key
 
-`az group deployment create -g rg_rise-demo --template-uri https://github.com/edwinsummers/rise-cloud-basics/iaas/tem_iaas-demo.json --parameters @https://github.com/edwinsummers/rise-cloud-basics/iaas/parameters_iaas-demo.json --parameters adminPublicKey=PUBLIC_KEY`
+`az group deployment create -g rg_rise-demo --template-uri https://github.com/edwinsummers/rise-cloud-basics/iaas/tem_iaas-demo.json --parameters @https://github.com/edwinsummers/rise-cloud-basics/iaas/parameters_iaas-demo.json --parameters adminPublicKey="PUBLIC_KEY"`
 
 Once deployment has completed, you can find the Public IP address using the following Azure CLI command. If you have multiple Public IP resources, look for the one named *riseiaasdemo-ip*.
 
@@ -71,3 +72,8 @@ Any string after the path `/foo/` will be repeated as text in the page body. Exa
 
 `http://<public_ip>:5000/foo/try_this_text`
 
+## Clean-Up
+
+Upon completion of your testing, delete the resources to save costs. This can be done via the Azure Portal, or the Azure CLI using the following:
+
+`az group delete -g rg_rise-demo`
