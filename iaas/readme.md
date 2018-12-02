@@ -50,7 +50,9 @@ The template deploys a small-instance (Standard B1) with Ubuntu Linux 18.04. The
 
 * Deploy the template; Replace *PUBLIC_KEY* with the contents of your SSH **public** key
 
-`az group deployment create -g rg_rise-demo --template-uri https://github.com/edwinsummers/rise-cloud-basics/iaas/tem_iaas-demo.json --parameters @https://github.com/edwinsummers/rise-cloud-basics/iaas/parameters_iaas-demo.json --parameters adminPublicKey="PUBLIC_KEY"`
+`az group deployment create -g rg_rise-demo --template-uri https://raw.githubusercontent.com/edwinsummers/rise-cloud-basics/master/iaas/tem_iaas-demo.json --parameters "$(curl https://raw.githubusercontent.com/edwinsummers/rise-cloud-basics/master/iaas/parameters_iaas-demo.json)" --parameters adminPublicKey="$SSH_PUBLIC_KEY"`
+
+*(Alternately, you can download the parameters file to your local disk, edit it as desired, and reference it by changing the parameters section as follows: `--parameters @parameters_iaas-demo.json`)*
 
 Once deployment has completed, you can find the Public IP address using the following Azure CLI command. If you have multiple Public IP resources, look for the one named *riseiaasdemo-ip*.
 
